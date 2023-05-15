@@ -1,18 +1,17 @@
 from typing import List
 
-from ...models.move import Move
-
 from ...models.box import Box
 from ...models.game import Game
+from ...models.move import Move
 from .pieces import Piece
 from .types import TicTacToePieceEnum
 
 
 class TicTacToe(Game):
     def play(self):
-        x, y = input(f"Player {self.shift.nickname} enter a transaction x,y: ").split(
-            ","
-        )
+        x, y = input(
+            f"Player {self.shift.get_nickname()} enter a transaction x,y: "
+        ).split(",")
 
         piece = (
             Piece(TicTacToePieceEnum.X)
@@ -21,9 +20,6 @@ class TicTacToe(Game):
         )
 
         self.make_move(Move(self.shift, int(x), int(y), piece))
-
-    def init_game(self):
-        super().init_game()
 
     def get_diagonal_a(self):
         box_1 = self.get_box_by_xy(0, 0)
@@ -50,8 +46,6 @@ class TicTacToe(Game):
         for box in boxes:
             if box.get_piece() is None:
                 return False
-
-            print(box)
             boalean_list.append(box.get_piece().get_name())
 
         return len(set(boalean_list)) == 1
@@ -72,6 +66,12 @@ class TicTacToe(Game):
                 return True
 
         return False
+
+    def init_game(self):
+        super().init_game()
+
+    def finsh_game(self):
+        return super().finsh_game()
 
     def make_move(self, move: Move):
         return super().make_move(move)

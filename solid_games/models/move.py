@@ -1,8 +1,8 @@
 import uuid
 from datetime import datetime
 
-from .player import Player
 from .piece import Piece
+from .player import Player
 
 
 class Move:

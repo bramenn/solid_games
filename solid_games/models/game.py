@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List
 
-from . import piece
 from .box import Box
 from .move import Move
 from .player import Player
@@ -62,7 +61,7 @@ class Game(ABC):
     def check_move(self, move: Move) -> bool:
         box = self.get_box_by_xy(move.pos_x, move.pos_y)
         if move.player != self.shift:
-            print(f"It is NOT your turn {move.player.nickname}")
+            print(f"It is NOT your turn {move.player.get_nickname()}")
             return False
         elif (
             move.pos_x > self.dimension
@@ -101,9 +100,7 @@ class Game(ABC):
         box.set_piece(piece=move.piece)
 
         if self.check_win():
-            print(f"{self.shift.nickname} You win!")
-            self.register_posints()
-            self.winner = self.shift
+            self.finsh_game()
 
         self.change_shift()
         self.register_move(move)
@@ -114,11 +111,18 @@ class Game(ABC):
         self.init_shift()
 
     @abstractmethod
+    def finsh_game(self):
+        print(f"{self.shift.get_nickname()} You win!")
+        self.shift.add_points(1)
+        self.winner = self.shift
+        self.finished = datetime.now()
+
+    @abstractmethod
     def load_board(self):
         pass
 
     @abstractmethod
-    def check_win(self):
+    def check_win(self) -> bool:
         pass
 
     @abstractmethod

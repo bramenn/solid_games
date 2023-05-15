@@ -1,5 +1,4 @@
 import random
-
 from typing import Any, Tuple, Union
 
 from .models import DisplayUI, Player, TicTacToe, TicTacToeDisplay

@@ -16,8 +16,8 @@ class DisplayUI(ABC):
     def show_players(self):
         print(
             f"""
-                Player # 1: {self.game.player_1.nickname}\t {self.game.player_1.points}
-                Player # 2: {self.game.player_2.nickname}\t {self.game.player_1.points}
+                Player # 1: {self.game.player_1.get_nickname()}\t {self.game.player_1.points}
+                Player # 2: {self.game.player_2.get_nickname()}\t {self.game.player_1.points}
             """
         )
 
@@ -26,7 +26,7 @@ class DisplayUI(ABC):
             f"""
                 Game ID: {self.game.id}
                 Creation: {self.game.created}
-                Shift: {self.game.shift.nickname}
+                Shift: {self.game.shift.get_nickname()}
                 # moves: {len(self.game.moves)}
             """
         )

@@ -4,8 +4,8 @@ from datetime import datetime
 from typing import List
 
 from .box import Box
-from .move import Move
 from .player import Player
+from .transaction import Transaction
 
 
 class Game(ABC):
@@ -23,7 +23,7 @@ class Game(ABC):
 
     shift: Player
 
-    moves: List[Move]
+    moves: List[Transaction]
 
     def __init__(self, player_1: Player, player_2: Player) -> None:
         self.id = uuid.uuid4()
@@ -58,7 +58,7 @@ class Game(ABC):
                 column.append(box)
         return column
 
-    def check_move(self, move: Move) -> bool:
+    def check_move(self, move: Transaction) -> bool:
         box = self.get_box_by_xy(move.pos_x, move.pos_y)
         if move.player != self.shift:
             print(f"It is NOT your turn {move.player.get_nickname()}")
@@ -76,7 +76,7 @@ class Game(ABC):
             return False
         return True
 
-    def register_move(self, move: Move):
+    def register_move(self, move: Transaction):
         self.moves.append(move)
 
     def register_posints(self):
@@ -92,7 +92,7 @@ class Game(ABC):
         self.shift = self.player_1 if self.player_1.is_host else self.player_2
 
     @abstractmethod
-    def make_move(self, move: Move):
+    def make_move(self, move: Transaction):
         if not self.check_move(move):
             return
 

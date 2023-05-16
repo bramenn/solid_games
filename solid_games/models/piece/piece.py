@@ -4,7 +4,7 @@ from typing import Any
 
 class Piece:
     name: str
-    type: Any
+    type: Enum
     pos_x: str
     pos_y: str
 

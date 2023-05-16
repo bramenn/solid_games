@@ -1,0 +1,2 @@
+class PieceError(Exception):
+    pass

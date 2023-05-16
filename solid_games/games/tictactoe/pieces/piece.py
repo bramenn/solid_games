@@ -1,4 +1,4 @@
-from ....models.piece import Piece as BasePiece
+from ....models.piece.piece import Piece as BasePiece
 
 
 class Piece(BasePiece):

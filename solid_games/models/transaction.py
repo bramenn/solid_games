@@ -1,11 +1,11 @@
 import uuid
 from datetime import datetime
 
-from .piece import Piece
+from .piece.piece import Piece
 from .player import Player
 
 
-class Move:
+class Transaction:
     id: str
 
     date: datetime

@@ -1,8 +1,6 @@
 from typing import List
 
-from ...models.box import Box
-from ...models.game import Game
-from ...models.move import Move
+from ...models.game import Box, Game, Transaction
 from .pieces import Piece
 from .types import TicTacToePieceEnum
 
@@ -19,7 +17,7 @@ class TicTacToe(Game):
             else Piece(TicTacToePieceEnum.O)
         )
 
-        self.make_move(Move(self.shift, int(x), int(y), piece))
+        self.make_move(Transaction(self.shift, int(x), int(y), piece))
 
     def get_diagonal_a(self):
         box_1 = self.get_box_by_xy(0, 0)
@@ -73,5 +71,5 @@ class TicTacToe(Game):
     def finsh_game(self):
         return super().finsh_game()
 
-    def make_move(self, move: Move):
+    def make_move(self, move: Transaction):
         return super().make_move(move)

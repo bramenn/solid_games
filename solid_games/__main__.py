@@ -1,7 +1,8 @@
 import random
 from typing import Any, Tuple, Union
 
-from .models import DisplayUI, Player, TicTacToe, TicTacToeDisplay
+from .games import Chess, ChessDisplay, TicTacToe, TicTacToeDisplay
+from .models import DisplayUI, Player
 
 Game = Union[TicTacToe, Any]
 
@@ -16,6 +17,12 @@ class Program:
         return test_game, display
 
     @staticmethod
+    def play_chess(player_1: Player, player_2: Player) -> Tuple[Chess, ChessDisplay]:
+        test_game = Chess(player_1=player_1, player_2=player_2)
+        display = ChessDisplay(game=test_game)
+        return test_game, display
+
+    @staticmethod
     def run():
         player_1 = Player("bramen")
         player_2 = Player("chelo")
@@ -25,7 +32,8 @@ class Program:
         else:
             player_2.is_host = True
 
-        test_game, display = Program.play_tictactoe(player_1, player_2)
+        # test_game, display = Program.play_tictactoe(player_1, player_2)
+        test_game, display = Program.play_chess(player_1, player_2)
 
         test_game.init_game()
         Program.play(game=test_game, display=display)

@@ -1,1 +1,3 @@
-from .pieces.piece_type import ChessPieceEnum
+from .chess import Chess
+from .pieces import Bishop, King, Knight, Pawn, Qeen, Rook
+from .ui import ChessDisplay

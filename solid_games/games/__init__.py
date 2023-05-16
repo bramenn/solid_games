@@ -1,2 +1,2 @@
-from .chess import ChessPieceEnum
-from .tictactoe import TicTacToe, TicTacToeDisplay, TicTacToePieceEnum
+from .chess import Chess, ChessDisplay
+from .tictactoe import TicTacToe, TicTacToeDisplay

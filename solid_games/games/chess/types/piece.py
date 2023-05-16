@@ -3,8 +3,8 @@ from enum import Enum
 
 class ChessPieceEnum(Enum):
     KING = "K"
-    QEEN = "Q"
-    BIGSHOP = "B"
-    KNIDHT = "KN"
+    QUEEN = "Q"
+    BISHOP = "B"
+    KNIGHT = "KN"
     ROOK = "R"
     PAWN = "P"
